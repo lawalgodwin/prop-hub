@@ -1,0 +1,48 @@
+{
+  "name": "prop-hub",
+  "version": "1.0.0",
+  "description": "A Real Estate Listing app",
+  "main": "src/app.js",
+  "scripts": {
+    "dev": "nodemon",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "test": "nodemon --exec 'mocha' --recursive",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lawalgodwin/prop-hub.git"
+  },
+  "keywords": [
+    "Real",
+    "Estate",
+    "Buy",
+    "Sell",
+    "Properties"
+  ],
+  "author": "Godwin Lawal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lawalgodwin/prop-hub/issues"
+  },
+  "homepage": "https://github.com/lawalgodwin/prop-hub#readme",
+  "devDependencies": {
+    "@babel/core": "^7.23.6",
+    "@babel/preset-env": "^7.23.6",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.4",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "chai": "^4.3.10",
+    "eslint": "^8.55.0",
+    "mocha": "^10.2.0",
+    "nodemon": "^3.0.2",
+    "sinon": "^17.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
