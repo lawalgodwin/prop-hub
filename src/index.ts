@@ -1,7 +1,10 @@
-import express from "express";
+import express from 'express'
+import router from './routes'
 
-const PORT: number = Number(process.env.PORT) || 5000;
+const PORT = parseInt((process.env.PORT ?? '5000') as string, 10)
 
-const app = express();
+const app = express()
 
-app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
+app.use(router)
+
+app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`))
