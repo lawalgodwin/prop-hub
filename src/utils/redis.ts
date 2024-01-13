@@ -1,24 +1,28 @@
-import { createClient, RedisClientType } from 'redis'
+import { createClient, RedisClientType } from 'redis';
 
 class RedisClient {
-  client: RedisClientType
-  isConnected: boolean = false
-  constructor () {
-    this.client = createClient()
-    this.client.connect().then((c) => { return c }).catch((e) => { return e })
-    this.client.on('connect', () => {
-      this.isConnected = true
-    })
-    this.client.on('error', function (err: Error) {
-      console.log(`Errro connecting to redis: ${err.message}`)
-    })
+  client: RedisClientType;
+  isConnected: boolean = false;
+
+  constructor() {
+    this.client = createClient();
+    this.establishConnection();
   }
 
-  isAlive (): boolean {
-    return this.isConnected
+  async establishConnection() {
+    try {
+      await this.client.connect();
+      this.isConnected = true;
+    } catch (error) {
+      console.error(`Error connecting to Redis: ${(error as Error).message}`);
+    }
+  }
+
+  async isAlive(): Promise<boolean> {
+    return this.isConnected;
   }
 }
 
-const redisClient = new RedisClient()
+const redisClient = new RedisClient();
 
-export default redisClient
+export default redisClient;

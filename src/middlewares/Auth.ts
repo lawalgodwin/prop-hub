@@ -12,16 +12,15 @@ export const validateRequest: RequestHandler = (req, res, next) => {
     const whiteListedPaths = [
         '/status',
         '/stats',
-        '/signup',
-        '/login',
+        '/api/v1/users/signup',
+        '/api/v1/users/login',
         '/api/v1/properties'
     ]
     if (auth) {
         const isAuthNeeded = auth.requireAuth(req.path, whiteListedPaths)
         if (isAuthNeeded) {
-            if (!auth.authorizationHeader(req)) return next(Error("Not Authorised"))
-            if (!auth.currentUser(req)) return next(Error('Forbidden'))
-            return next()
+            if (!auth.authorizationHeader(req)) return res.status(401).end('Not Authorized')
+            if (!auth.currentUser(req)) return res.status(403).end('Forbidden')
         }
         next()
     }

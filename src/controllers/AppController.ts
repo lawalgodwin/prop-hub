@@ -8,15 +8,13 @@ interface StatusResponseType {
   redis: boolean
 }
 
-/* eslint-disable @typescript-eslint/no-extraneous-class */
-
 class AppController {
   /**
     * get database connectivity status
     */
-  static getStatus (req: Request, res: Response): Response<StatusResponseType> {
-    const database = dbClient.isAlive()
-    const redis = redisClient.isAlive()
+  static async getStatus (req: Request, res: Response): Promise<Response<StatusResponseType>> {
+    const database = await dbClient.isAlive()
+    const redis = await redisClient.isAlive()
     return res.status(200).json({ database, redis })
   }
 

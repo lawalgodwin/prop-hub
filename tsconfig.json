@@ -11,8 +11,8 @@
       "strict": true
     },
     "include": [
-      "src/**/*.ts"
-, "src/controllers/AppController.js"    ],
+      "src/**/*.ts",
+    ],
     "exclude": [
       "node_modules"
     ]
